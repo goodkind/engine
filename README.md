@@ -1,2 +1,2 @@
-# engine
-A java game engine with OpenGL libraries
+# engine 0.4.0
+A java game engine
