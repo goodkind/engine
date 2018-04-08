@@ -87,7 +87,7 @@ public class Game extends Canvas implements Runnable {
 		}
 		stop();
 	}
-
+	
 	public void update() {
 
 	}
