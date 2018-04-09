@@ -10,6 +10,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import com.decre.main.graphics.Screen;
+import com.decre.main.input.KeyBoard;
 
 public class Game extends Canvas implements Runnable {
 
@@ -23,6 +24,7 @@ public class Game extends Canvas implements Runnable {
 
 	private Thread thread;
 	private JFrame frame;
+	private KeyBoard key;
 	private boolean running;
 
 	private Screen screen;
@@ -34,8 +36,11 @@ public class Game extends Canvas implements Runnable {
 		Dimension size = new Dimension(width * scale, height * scale);
 		setPreferredSize(size);
 
-		frame = new JFrame();
 		screen = new Screen(width, height);
+		frame = new JFrame();
+		key = new KeyBoard();
+
+		addKeyListener(key);
 	}
 
 	public synchronized void start() {
@@ -87,8 +92,20 @@ public class Game extends Canvas implements Runnable {
 		}
 		stop();
 	}
-	
+
+	int x = 0, y = 0;
+
 	public void update() {
+		key.update();
+
+		if (key.up)
+			y--;
+		if (key.down)
+			y++;
+		if (key.left)
+			x--;
+		if (key.right)
+			x++;
 
 	}
 
@@ -99,7 +116,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear();
-		screen.render();
+		screen.render(x, y);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
