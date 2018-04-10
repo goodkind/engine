@@ -3,9 +3,9 @@ package com.decre.main.level.tile;
 import com.decre.main.graphics.Screen;
 import com.decre.main.graphics.Sprite;
 
-public class GrassTile extends Tile {
+public class VoidTile extends Tile {
 
-	public GrassTile(Sprite sprite) {
+	public VoidTile(Sprite sprite) {
 		super(sprite);
 	}
 
