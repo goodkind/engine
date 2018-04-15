@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 
 import com.decre.main.graphics.Screen;
 import com.decre.main.input.KeyBoard;
+import com.decre.main.level.Level;
+import com.decre.main.level.RandomLevel;
 
 public class Game extends Canvas implements Runnable {
 
@@ -25,6 +27,7 @@ public class Game extends Canvas implements Runnable {
 	private Thread thread;
 	private JFrame frame;
 	private KeyBoard key;
+	private Level level;
 	private boolean running;
 
 	private Screen screen;
@@ -39,6 +42,7 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new KeyBoard();
+		level = new RandomLevel(64, 64);
 
 		addKeyListener(key);
 	}
@@ -116,7 +120,7 @@ public class Game extends Canvas implements Runnable {
 			return;
 		}
 		screen.clear();
-		screen.render(x, y);
+		level.render(x, y, screen);
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
