@@ -11,12 +11,18 @@ public abstract class Mob extends Entity {
 	protected boolean moving;
 
 	public void move(int dx, int dy) {
-		if(dx > 0) dir = 1;
-		if(dy > 0) dir = 2;
-		if(dx < 0) dir = 3;
-		if(dy < 0) dir = 0;
-		
-		if (!collision()) {
+		if (dx != 0 && dy != 0) {
+			move(dx, 0);
+			move(0, dy);
+			return;
+		}
+
+		if (dx > 0) dir = 1;
+		if (dy > 0) dir = 2;
+		if (dx < 0) dir = 3;
+		if (dy < 0) dir = 0;
+
+		if (!collision(dx, dy)) {
 			this.x += dx;
 			this.y += dy;
 		}
@@ -30,8 +36,16 @@ public abstract class Mob extends Entity {
 
 	}
 
-	private boolean collision() {
-		return false;
+	private boolean collision(int dx, int dy) {
+		boolean solid = false;
+		for (int c = 0; c < 4; c++) {
+			int xt = ((x + dx) + c % 2 * 14 - 8) / 16;
+			int yt = ((y + dy) + c / 2 * 12 + 3) / 16;
+
+			if (level.getTile(xt, yt).solid()) solid = true;
+		}
+
+		return solid;
 	}
 
 }

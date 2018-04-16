@@ -53,9 +53,6 @@ public class Level {
 		}
 	}
 
-	// Grass = 0xff00
-	// Flower = 0xffff00
-	// Rock = 0x7f7f00
 	public Tile getTile(int x, int y) {
 		if (x < 0 || y < 0 || x >= width || y >= height) return Tile.voidTile;
 		if (tiles[x + y * width] == Tile.colSpawnGrass) return Tile.spawnGrass;
