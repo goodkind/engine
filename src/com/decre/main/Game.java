@@ -13,15 +13,15 @@ import com.decre.main.entity.mob.Player;
 import com.decre.main.graphics.Screen;
 import com.decre.main.input.KeyBoard;
 import com.decre.main.level.Level;
-import com.decre.main.level.RandomLevel;
+import com.decre.main.level.TileCoordinate;
 
 public class Game extends Canvas implements Runnable {
 
 	private static final long serialVersionUID = -6528699784320412933L;
 
-	public static int width = 300;
+	public static int scale = 2;
+	public static int width = 720 / scale;
 	public static int height = width / 16 * 9;
-	public static int scale = 3;
 
 	public static final String TITLE = "Reign";
 
@@ -44,8 +44,9 @@ public class Game extends Canvas implements Runnable {
 		screen = new Screen(width, height);
 		frame = new JFrame();
 		key = new KeyBoard();
-		level = new RandomLevel(64, 64);
-		player = new Player(key);
+		level = Level.spawn;
+		TileCoordinate playerSpawn = new TileCoordinate(20, 50);
+		player = new Player(playerSpawn.X(), playerSpawn.Y(), key);
 
 		addKeyListener(key);
 	}

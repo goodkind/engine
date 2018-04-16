@@ -7,9 +7,20 @@ public class Sprite {
 	public int[] pixels;
 	private SpriteSheet sheet;
 
-	public static Sprite grass = new Sprite(16, 0, 0, SpriteSheet.tiles);
-	public static Sprite voidSprite = new Sprite(16, 0);
+	public static Sprite grass = new Sprite(16, 0, 5, SpriteSheet.tiles);
+	public static Sprite flower = new Sprite(16, 1, 0, SpriteSheet.tiles);
+	public static Sprite rock = new Sprite(16, 2, 0, SpriteSheet.tiles);
+	public static Sprite voidSprite = new Sprite(16, 0x1b87e0);
 
+	// Spawn Level Sprites:
+	public static Sprite spawnGrass = new Sprite(16, 0, 0, SpriteSheet.spawnTiles);
+	public static Sprite spawnHedge = new Sprite(16, 1, 0, SpriteSheet.spawnTiles);
+	public static Sprite spawnWater = new Sprite(16, 2, 0, SpriteSheet.spawnTiles);
+	public static Sprite spawnWall1 = new Sprite(16, 0, 1, SpriteSheet.spawnTiles);
+	public static Sprite spawnWall2 = new Sprite(16, 0, 2, SpriteSheet.spawnTiles);
+	public static Sprite spawnFloor = new Sprite(16, 1, 1, SpriteSheet.spawnTiles);
+
+	// Player Sprites
 	public static Sprite playerUp = new Sprite(32, 0, 5, SpriteSheet.tiles);
 	public static Sprite playerUp_1 = new Sprite(32, 0, 6, SpriteSheet.tiles);
 	public static Sprite playerUp_2 = new Sprite(32, 0, 7, SpriteSheet.tiles);
