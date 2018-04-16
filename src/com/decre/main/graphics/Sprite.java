@@ -31,6 +31,9 @@ public class Sprite {
 	public static Sprite playerSide_1 = new Sprite(32, 1, 6, SpriteSheet.tiles);
 	public static Sprite playerSide_2 = new Sprite(32, 1, 7, SpriteSheet.tiles);
 
+	// Projectile Sprites
+	public static Sprite wizardProjectile = new Sprite(16, 0, 0, SpriteSheet.WizardProjectiles);
+
 	public Sprite(int size, int x, int y, SpriteSheet sheet) {
 		this.SIZE = size;
 		pixels = new int[size * size];

@@ -1,6 +1,8 @@
 package com.decre.main.entity.mob;
 
 import com.decre.main.entity.Entity;
+import com.decre.main.entity.projectile.Projectile;
+import com.decre.main.entity.projectile.WizardProjectile;
 import com.decre.main.graphics.Screen;
 import com.decre.main.graphics.Sprite;
 
@@ -26,10 +28,16 @@ public abstract class Mob extends Entity {
 			this.x += dx;
 			this.y += dy;
 		}
+
 	}
 
 	public void update() {
 
+	}
+
+	protected void shoot(int x, int y, double dir) {
+		Projectile p = new WizardProjectile(x, y, dir);
+		level.addProjectile(p);
 	}
 
 	public void render(Screen screen) {
