@@ -37,6 +37,10 @@ public abstract class Projectile extends Entity {
 	protected void move() {
 
 	}
+	
+	public double getRateOfFire() {
+		return rateOfFire;
+	}
 
 	@Override
 	public void render(Screen screen) {
